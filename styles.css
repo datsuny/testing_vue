@@ -52,3 +52,37 @@ button {
 span {
   cursor: pointer;
 }
+
+/*estilos ejercicio 2*/
+
+h1.title{
+    font-weight: 500;
+    font-style: italic;
+    font-size: 3.2em;
+}
+
+.mensaje{
+    margin: 0 auto;
+    text-align: center;
+}
+
+.listCourses{
+    margin: 50px auto;
+    border: solid 1px #dee2e6;
+}
+
+.coursesUser{
+    margin: 30px auto 0;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] { -moz-appearance:textfield; }
+
+.input-group-lg>.form-control{
+    font-size: 1em;
+}

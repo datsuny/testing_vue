@@ -11,12 +11,17 @@
   <div id="app" v-bind:style="{background: '#'+ color}">
     <img v-on:mouseover="toggleShowPrices" v-on:mouseout="toggleShowPrices"v-bind:src="img" v-bind:alt="name">
     <h1 v-bind:class="changePercent > 0 ? 'green' : 'red'">
-      {{name}}
+      {{title}}
        <span v-if="changePercent > 0">👍</span>
        <span v-else-if="changePercent < 0">👎</span>
        <span v-else>🐔</span>
 
     </h1>
+
+    <!-- Data binding: Manipula los datos ingresados por el usuario-->
+    <input type="number" v-model="value">
+    <span>{{convertedValue}}</span>
+    <!--/Data binding -->
 
     <span v-on:click="toggleShowPrices">{{ showPrices ? 'emoji de monito normal' : 'emoji de monito con las manos en la cara' }}</span>
 
@@ -27,7 +32,68 @@
     </ul>
 
   </div>
+
+  <!-- ----------------------------------------------------------------- -->
+
+  <div id="app2" class="container">
+    <h1 class="title display-4 text-center col-12 col-md-5 mx-auto">
+      {{ titleProject2 }}
+    </h1>
+
+    <!--inputs-->
+
+  <div class="coursesUser col-12 col-md-5 mx-auto">
+
+    <div class="input-group mb-2 input-group-lg">
+      <input v-model="title" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Ingresa tu curso">
+    </div>
+
+    <div class="input-group mb-2 input-group-lg">
+      <input v-model="time" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Indica las horas">
+    </div>
+    <button v-on:click="addCourse" type="button" class="btn btn-primary mt-2 mb-5 mx-auto">Agregar curso</button>
+
+
+    <div class="mensajes col-12 col-md-5 mx-auto">
+                <div v-if="courses.length > 0" class="mensaje alert alert-success">
+                    Has estudiado {{ totalTime }} durante este 2020
+                </div>
+                <div v-else class="mensaje alert alert-danger" role="alert">
+                    Aún no has iniciado algún curso
+                </div>
+            </div>
+
+            <!-- Tabla de cursos -->
+            <table v-if="courses.length > 0" class="listCourses table table-striped text-center col-11 col-md-10 mx-auto">
+                <thead>
+                    <tr>
+                        <th scope="col"> {{ id }} </th>
+                        <th scope="name"> {{ curso }} </th>
+                        <th scope="hours"> {{ horas }} </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(curse, i) in courses" v-bind:key="i">
+                        <th scope="row">{{ i + 1 }}</th>
+                        <td>{{ curse.title }}</td>
+                        <td>{{ curse.time + ' hrs' }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- Fin Tabla de cursos -->
+  </div>
+
+
+
+  <!-- VUE JS -->
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <!-- SCRIPT -->
   <script src="app.js"></script>
+
+  <!-- BOOTSTRAP -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 </html>
