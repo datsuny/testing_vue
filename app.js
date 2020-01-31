@@ -104,4 +104,44 @@ new Vue({
       return total
     }
   }
+}),
+
+//components
+
+Vue.component('counter',{
+  data(){
+    return{
+      counter: 0,
+
+    }
+
+
+  },
+
+  methods:{
+    increments(){
+      this.counter += 1
+    }
+  },
+
+  template: `
+
+  <div>
+    <button v-on:click="increments"> Click me!</button>
+    <span>{{counter}}</span>
+  </div>
+
+  `
+})
+
+
+new Vue({
+  el: '#app3',
+
+  data(){
+    return{
+      title: 'hola',
+
+    }
+  }
 })
